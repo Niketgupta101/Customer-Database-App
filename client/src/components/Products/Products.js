@@ -39,6 +39,17 @@ const Products = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if(AddProductBoxOpen && formData.product_id===undefined)
+    {
+      setformData(prev => ({...prev, product_id: uuid.v4() }));
+    }
+    if(!AddProductBoxOpen)
+    {
+      setformData({})
+    }
+  },[AddProductBoxOpen])
+
   const handleAddProductBox = async () => {
     setAddProductBoxOpen((prev) => !prev);
   };
