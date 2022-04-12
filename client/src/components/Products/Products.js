@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductsForOrder, getOrderById, createNewProduct, deleteProductById, updateProductById } from "../../api";
+import {
+  getProductsForOrder,
+  getOrderById,
+  createNewProduct,
+  deleteProductById,
+  updateProductById,
+} from "../../api";
 
 import * as uuid from "uuid";
 
@@ -38,34 +44,49 @@ const Products = () => {
   };
 
   const handleEditProduct = async (product) => {
-    setformData({...product});
+    setformData({ ...product });
     handleAddProductBox();
   };
 
   const handleDeleteProduct = async (id) => {
-      const response = await deleteProductById(id);
-      console.log(response);
-      fetchData();
-  }
+    const response = await deleteProductById(id);
+    console.log(response);
+    fetchData();
+  };
 
   const handleOnChange = (e) => {
-    setformData(prevData => ({...prevData, [e.target.name]: e.target.value}));
-  }
+    if(e.target.name==='status')
+    {
+        if(e.target.checked)
+        {
+            setformData((prevData) => ({
+                ...prevData,
+                status: (formData.status==='Done')? 'Processing':'Done',
+              }));
+        }
+    }
+    else{
+        setformData((prevData) => ({
+            ...prevData,
+            [e.target.name]: e.target.value,
+          }));
+    }
+  };
 
   const handleFormSubmit = async (e) => {
-      e.preventDefault();
-      console.log(formData);
-      let response;
-      if(formData._id!==undefined)
+    e.preventDefault();
+    console.log(formData);
+    let response;
+    if (formData._id !== undefined)
       response = await updateProductById(formData);
-      else{
-        response = await createNewProduct({ orderId, formData });
-      }
-      console.log(response);
-      fetchData();
-      handleAddProductBox();
-      setformData({});
-  }
+    else {
+      response = await createNewProduct({ orderId, formData });
+    }
+    console.log(response);
+    fetchData();
+    handleAddProductBox();
+    setformData({});
+  };
 
   return (
     <>
@@ -119,8 +140,18 @@ const Products = () => {
                   <h3>{product.quantity}</h3>
                 </div>
                 <div className="order_actions">
-                  <button className="primary_btn" onClick={() => handleEditProduct(product)}>Edit Product</button>
-                  <button className="primary_btn" onClick={() => handleDeleteProduct(product._id)}>Delete Product</button>
+                  <button
+                    className="primary_btn"
+                    onClick={() => handleEditProduct(product)}
+                  >
+                    Edit Product
+                  </button>
+                  <button
+                    className="primary_btn"
+                    onClick={() => handleDeleteProduct(product._id)}
+                  >
+                    Delete Product
+                  </button>
                 </div>
               </div>
             </div>
@@ -129,29 +160,62 @@ const Products = () => {
       <div className="add_btn" onClick={handleAddProductBox}>
         <h1>+</h1>
       </div>
-      {AddProductBoxOpen && <div className="add_product">
+      {AddProductBoxOpen && (
+        <div className="add_product">
           <div className="close_btn" onClick={handleAddProductBox}>
-              <h3>X</h3>
+            <h3>X</h3>
           </div>
           <div className="add_header">
-              <h2>{formData._id!==undefined ? 'Edit Product': 'Add New Product'}</h2>
+            <h2>
+              {formData._id !== undefined ? "Edit Product" : "Add New Product"}
+            </h2>
           </div>
           <form onSubmit={handleFormSubmit}>
             <div className="input_element">
-                <label htmlFor="product_id">Product Id</label>
-                <input type="text" name="product_id" value={formData.product_id} disabled/>
+              <label htmlFor="product_id">Product Id</label>
+              <input
+                type="text"
+                name="product_id"
+                value={formData.product_id}
+                disabled
+              />
             </div>
             <div className="input_element">
-                <label htmlFor="name">Name of the product</label>
-                <input type="text" name="name" value={formData.name} onChange={handleOnChange}/>
+              <label htmlFor="name">Name of the product</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleOnChange}
+              />
             </div>
             <div className="input_element">
-                <label htmlFor="quantity">Quantity</label>
-                <input type="Number" name="quantity" value={formData.quantity} onChange={handleOnChange}/>
+              <label htmlFor="quantity">Quantity</label>
+              <input
+                type="Number"
+                name="quantity"
+                value={formData.quantity}
+                onChange={handleOnChange}
+              />
             </div>
+            {formData._id !== undefined && (
+              <div className="input_element" style={{ display: 'flex', flexDirection: 'row', alignItems:'center' }}>
+                <input
+                  type="checkbox"
+                  name="status"
+                  id="status"
+                  onClick={handleOnChange}
+                  style={{ width: '60px', marginRight: '0.5rem'}}
+                />
+                <label htmlFor="status">
+                  Change current status
+                </label>
+              </div>
+            )}
             <input type="submit" className="primary_btn" />
           </form>
-          </div>}
+        </div>
+      )}
     </>
   );
 };
