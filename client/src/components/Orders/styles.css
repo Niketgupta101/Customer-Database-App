@@ -1,0 +1,224 @@
+.Order_header{
+    width: 75%;
+    margin: 2rem auto;
+    text-align: center;
+    color: #fff;
+}
+.Order_header h2{
+    width: 100%;
+    font-size: 30px;
+}
+
+.customer_details{
+    width: 70%;
+    margin: auto;
+}
+.customer_details h3{
+    background-color: blue;
+    font-size: 20px;
+    padding: 0.3rem 1rem;
+    color: #fff;
+}
+.details{
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 1px 1px 6px 2px rgba(7, 7, 7, 0.316);
+    display: flex;
+    color: black;
+}
+.left_headers>h4{
+    display: inline;
+    width: 100%;
+}
+.left_headers{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    padding: 1rem;
+    /* text-align: right; */
+    color: red;
+    border-right: 1px solid grey;
+}
+.right_headers{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 1rem;
+    text-align: left;
+    color: black;
+}
+
+.orders{
+    width: 70%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+}
+.order{
+    width: 100%;
+    background-color: #fff;
+    border-left: 10px solid green;
+    display:  flex;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
+}
+.order_left h2{
+    font-size: 18px;
+    color: red;
+    margin-bottom: 0.5rem;
+}
+.order_left h3{
+    font-size: 16px;
+    margin-bottom: 1rem;
+    color: rgb(68, 67, 67);
+}
+.order_middle h2{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: red;
+    margin-bottom: 0.5rem;
+}
+.order_middle h3{
+    width: 100%;
+    font-size: 17px;
+    color: rgb(68, 67, 67);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.order_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: right;
+}
+.product_stats{
+    width: 100%;
+}
+.product_stats h2{
+    /* display: inline; */
+    width: 100%;
+    text-align: right;
+    font-size: 18px;
+    color: red;
+    margin-bottom: 1rem;
+}
+.product_stats h3{
+    width: 100%;
+    font-size: 25px;
+    color: rgb(68, 67, 67);
+    text-align: right;
+}
+.order_actions{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+.order_actions>button{
+    background-color: transparent;
+    color: green;
+    border: 2px solid green;
+    font-weight: bolder;
+    margin: 0.3rem 0 0.5rem 0.3rem;
+    transition: all ease 500ms;
+}
+.order_actions>button:hover{
+    background-color: green;
+    color: #fff;
+}
+
+.add_btn{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: blue;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #fff;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.add_btn>h1{
+    width: 100%;
+    height: 100%;
+    display: inline;
+    text-align: center;
+}
+
+.add_product{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    height: 380px;
+    background-color: #fff;
+    box-shadow: -1px -1px 6px 2px gray;
+}
+
+.add_header{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.add_header>h2{
+    width: 100%;
+    font-size: 22px;
+    color: red;
+    font-weight: 700;
+    text-align: center;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.input_element{
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0.5rem 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: blue;
+}
+.input_element>input{
+    width: 100%;
+    margin: 0.3rem 0;
+    height: 33px;
+    padding: 0.3rem 0.5rem;
+}
+.close_btn{
+    width: 100%;
+}
+.close_btn h3{
+    width: 100%;
+    font-size: 18px;
+    padding: 0.8rem 0.8rem 0 0;
+    text-align: right;
+    color: rgb(42, 42, 42. 0.4);
+    font-family:Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+.create_order{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.create_order>button{
+    display: inline;
+    margin: 0.3rem;
+    background-color: yellow;
+    color: red;
+    font-size: 14px;
+    padding: 0.3rem 0.5rem;
+    font-weight: 600;
+}
